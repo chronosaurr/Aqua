@@ -9,6 +9,7 @@ abstract class BaseController {
         extract($data);
 
         require_once VIEW_PATH . '/partials/header.php';
+        require_once VIEW_PATH . '/partials/navbar.php';
         require_once VIEW_PATH . '/' . $viewName . '.php';
         require_once VIEW_PATH . '/partials/footer.php';
     }
