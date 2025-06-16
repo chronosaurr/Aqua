@@ -81,7 +81,7 @@
         - [ ] Lista użytkowników
         - [ ] Możliwość zmiany roli, edycji danych
     - [ ] Zarządzanie działami (CRUD)
-        - [ ] Lista działów
+        - [x] Lista działów
         - [ ] Formularze dodawania/edycji działów
 - [ ] **Funkcjonalności dla Właściciela Działu (rola 'owner')**
     - [ ] Możliwość edycji/usuwania ticketów tylko w swoim dziale
