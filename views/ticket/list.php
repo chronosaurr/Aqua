@@ -1,5 +1,5 @@
 <h1><?= EMOJI['ticket'] ?> Lista Wszystkich Ticketów</h1>
-<p>Ta strona wyświetla wszystkie zadania w systemie.</p>Add commentMore actions
+<p>Ta strona wyświetla wszystkie zadania w systemie.</p>
 
 <?php
 

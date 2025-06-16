@@ -22,7 +22,7 @@
                     <?= EMOJI['users'] ?> Użytkownicy
                 </a>
             </li>
-            <li>Add commentMore actions
+            <li>
                 <a href="/department/list" class="<?= ($activeController === 'department') ? 'active' : '' ?>">
                     <?= EMOJI['department'] ?> Działy
                 </a>

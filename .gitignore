@@ -1,3 +1,8 @@
 
 .env
 zrzut/
+/vendor/
+composer.lock
+
+/logs/
+/public/uploads/

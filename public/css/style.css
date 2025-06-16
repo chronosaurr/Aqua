@@ -36,7 +36,7 @@ body {
     width: 90%;
 }
 
-/* --- header i navbar --- */
+/*  header i navbar  */
 .main-header {
     align-items: center;
     background-color: var(--primary-green);
@@ -77,7 +77,7 @@ body {
     font-weight: bold;
 }
 
-/* --- dropdown Menu --- */
+/*  dropdown Menu  */
 .dropdown {
     position: relative;
 }
@@ -112,7 +112,7 @@ body {
     display: block;
 }
 
-/* --- stopka --- */
+/*  stopka  */
 .main-footer {
     text-align: center;
     padding: 0px;
@@ -226,4 +226,53 @@ body {
 .btn-primary:hover {
     background-color: var(--primary-green);
     border-color: var(--primary-green);
+}
+
+/* listy załączników */
+.attachment-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 5px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background-color: var(--background-tint);
+    max-height: 150px;
+    overflow-y: auto;
+}
+.attachment-list li {
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.attachment-list li:last-child {
+    border-bottom: none;
+}
+.attachment-list li a {
+    text-decoration: none;
+    color: var(--primary-green-dark);
+    font-weight: bold;
+    flex-grow: 1;
+    margin-right: 10px;
+}
+.attachment-list li a:hover {
+    text-decoration: underline;
+}
+.attachment-list li input[type="checkbox"] {
+    margin-right: 5px;
+    -webkit-appearance: checkbox;
+    -moz-appearance: checkbox;
+    width: auto;
+    padding: 0;
+}
+.delete-checkbox-label {
+    font-weight: normal;
+    color: #dc3545;
+    margin-bottom: 0;
+    display: inline;
+    cursor: pointer;
+}
+.delete-checkbox-label:hover {
+    text-decoration: underline;
 }

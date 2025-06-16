@@ -47,25 +47,25 @@
   - [x] Stworzenie klas-modeli: `Ticket.php`, `Department.php`, `Comment.php`, `Attachment.php`
   - [x] Stworzenie kontrolera `TicketController.php`
   - [x] Stworzenie listy wydziałów
-- [ ] **Implementacja tworzenia ticketu (CRUD - Create)**
+- [x] **Implementacja tworzenia ticketu (CRUD - Create)**
   - [x] Stworzenie widoku formularza `views/ticket/create.php`
-  - [ ] Metoda `create()` w `TicketController` do wyświetlania formularza
-  - [ ] Metoda `store()` w `TicketController` do obsługi danych z formularza
-  - [ ] Walidacja danych ticketu
-  - [ ] Logika obsługi przesyłania załącznika (`$_FILES`, `move_uploaded_file()`)
-  - [ ] Zapis informacji o tickecie i załączniku do odpowiednich tabel w bazie
-- [ ] **Implementacja wyświetlania ticketów (CRUD - Read)**
+  - [x] Metoda `create()` w `TicketController` do wyświetlania formularza
+  - [x] Metoda `store()` w `TicketController` do obsługi danych z formularza
+  - [x] Walidacja danych ticketu
+  - [x] Logika obsługi przesyłania załącznika (`$_FILES`, `move_uploaded_file()`)
+  - [x] Zapis informacji o tickecie i załączniku do odpowiednich tabel w bazie
+- [x] **Implementacja wyświetlania ticketów (CRUD - Read)**
   - [x] Metoda `index()` w `TicketController` do wyświetlania listy wszystkich ticketów
   - [x] Widok `views/ticket/list.php` z tabelą ticketów
-  - [ ] Metoda `show($id)` w `TicketController` do wyświetlania pojedynczego ticketu
-  - [ ] Widok `views/ticket/show.php` ze szczegółami ticketu, listą komentarzy i załącznikami
-- [ ] **Implementacja edycji i zamykania ticketu (CRUD - Update)**
-  - [ ] Metoda `edit($id)` w `TicketController` do wyświetlania formularza edycji
-  - [ ] Widok `views/ticket/edit.php` z wypełnionymi danymi
-  - [ ] Metoda `update($id)` do zapisu zmian w bazie
-  - [ ] Przycisk i metoda do zmiany statusu na "zamknięty" i ustawienia `closed_at`
-- [ ] **Implementacja usuwania ticketu (CRUD - Delete)**
-  - [ ] Metoda `delete($id)` w `TicketController` do usuwania ticketu (i powiązanych komentarzy/załączników)
+  - [x] Metoda `show($id)` w `TicketController` do wyświetlania pojedynczego ticketu
+  - [x] Widok `views/ticket/show.php` ze szczegółami ticketu, listą komentarzy i załącznikami
+- [x] **Implementacja edycji i zamykania ticketu (CRUD - Update)**
+  - [x] Metoda `edit($id)` w `TicketController` do wyświetlania formularza edycji
+  - [x] Widok `views/ticket/edit.php` z wypełnionymi danymi
+  - [x] Metoda `update($id)` do zapisu zmian w bazie
+  - [x] Przycisk i metoda do zmiany statusu na "zamknięty" i ustawienia `closed_at`
+- [x] **Implementacja usuwania ticketu (CRUD - Delete)**
+  - [x] Metoda `delete($id)` w `TicketController` do usuwania ticketu (i powiązanych komentarzy/załączników)
 - [ ] **System Komentarzy**
   - [ ] Formularz dodawania komentarza pod widokiem ticketu
   - [ ] Metoda w `CommentController` lub `TicketController` do zapisu komentarza
@@ -73,10 +73,10 @@
 
 ## Faza 3: Panel Administracyjny i Role
 
-- [ ] **Implementacja logiki ról i uprawnień**
-  - [ ] Rozbudowa klasy `Auth` o metody sprawdzające role (np. `isAdmin()`, `isOwner()`)
-  - [ ] Zabezpieczanie metod w kontrolerach w oparciu o role
-- [ ] **Panel Administratora (`AdminController`)**
+- [x] **Implementacja logiki ról i uprawnień**
+  - [x] Rozbudowa klasy `Auth` o metody sprawdzające role (np. `isAdmin()`, `isOwner()`)
+  - [x] Zabezpieczanie metod w kontrolerach w oparciu o role
+- [x] **Panel Administratora (`AdminController`)**
   - [x] Widok panelu `views/admin/dashboard.php`
   - [x] Zarządzanie użytkownikami (CRUD)
     - [x] Lista użytkowników

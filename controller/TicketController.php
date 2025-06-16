@@ -193,8 +193,8 @@ class TicketController extends BaseController {
             return;
         }
 
-        // $attachments = $this->attachmentModel->findByTicketId($id); // Zakładam istnienie tej metody w Attachment
-        // $comments = $this->commentModel->findByTicketId($id); // Zakładam istnienie tej metody w Comment
+        // $attachments = $this->attachmentModel->findByTicketId($id);
+        // $comments = $this->commentModel->findByTicketId($id);
 
         $data = [
             'title' => 'Ticket #' . $ticket['id'],
@@ -283,16 +283,8 @@ class TicketController extends BaseController {
                 try { new DateTime($input['deadline_at']); } catch (Exception $e) { $errors['deadline_at'] = 'Nieprawidłowa data.'; }
             }
         } else {
-            $input['deadline_at'] = null; // Ustaw na null
+            $input['deadline_at'] = null;
         }
-
-        // TODO: Obsługa załącznika podczas edycji (dodawanie nowych, usuwanie starych) - bardziej złożone
-        // Tutaj logika dla plików jest bardziej złożona, bo musisz obsłużyć:
-        // 1. Dodanie nowego pliku
-        // 2. Usunięcie istniejącego pliku (np. checkbox "usuń załącznik")
-        // 3. Zastąpienie istniejącego pliku nowym
-        // To wykracza poza zakres prostej implementacji, wymaga dodatkowych pól w formularzu
-        // i logiki w modelu/kontrolerze.
 
         if (empty($errors)) {
             if ($this->ticketModel->update($id, $input)) {
@@ -327,13 +319,15 @@ class TicketController extends BaseController {
             return;
         }
 
-        // TODO: Sprawdzenie uprawnień użytkownika do usunięcia tego konkretnego ticketu
-        // np. czy użytkownik jest twórcą, przypisanym, czy administratorem/właścicielem.
-        // if (Auth::getUserId() !== $ticket['creator_id'] && Auth::getRole() !== 'admin') {
-        //     http_response_code(403);
-        //     $this->renderView('errors/403');
-        //     return;
-        // }
+        $currentUser = Auth::getUserId();
+        $currentUserRole = Auth::getRole();
+
+
+        if ($currentUserRole !== 'admin' && $currentUser !== $ticket['creator_id']) {
+            http_response_code(403);
+            $this->renderView('errors/403');
+            exit;
+        }
 
         $dbConnection = Database::getInstance()->getConnection();
         try {
@@ -351,7 +345,6 @@ class TicketController extends BaseController {
             // if (isset($this->commentModel)) {
             //     $this->commentModel->deleteByTicketId($id);
             // }
-
 
             $this->ticketModel->delete($id);
 

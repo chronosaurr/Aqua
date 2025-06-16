@@ -1,6 +1,7 @@
 <?php
 $errors = $errors ?? [];
 $input = $input ?? [];
+$current_attachments = $current_attachments ?? [];
 ?>
 
 <?php require_once VIEW_PATH . '/partials/header.php'; ?>
@@ -36,7 +37,7 @@ $input = $input ?? [];
         <label for="status">Status:</label>
         <select id="status" name="status" required>
             <?php
-            $statuses = ['otwarty', 'w_toku', 'zamknięty', 'oczekujący'];
+            $statuses = ['otwarty', 'w_toku', 'zamknięty', 'oczekujący']; // Zgodne z kontrolerem
             foreach ($statuses as $statusOption):
                 ?>
                 <option value="<?= $statusOption ?>"
@@ -101,9 +102,27 @@ $input = $input ?? [];
     </div>
 
     <div class="form-group">
-        <label for="attachment">Nowy Załącznik (opcjonalnie):</label>
+        <label>Istniejące Załączniki:</label>
+        <?php if (!empty($current_attachments)): ?>
+            <ul class="attachment-list">
+                <?php foreach ($current_attachments as $attachment): ?>
+                    <li>
+                        <a href="/uploads/<?= htmlspecialchars($attachment['stored_filename']) ?>" target="_blank">
+                            <?= htmlspecialchars($attachment['original_filename']) ?> (<?= round($attachment['filesize'] / 1024, 1) ?> KB)
+                        </a>
+                        <input type="checkbox" name="attachments_to_delete[]" value="<?= $attachment['id'] ?>" id="delete_<?= $attachment['id'] ?>">
+                        <label for="delete_<?= $attachment['id'] ?>" class="delete-checkbox-label">Usuń</label>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        <?php else: ?>
+            <p>Brak istniejących załączników.</p>
+        <?php endif; ?>
+    </div>
+
+    <div class="form-group">
+        <label for="attachment">Dodaj Nowy Załącznik (opcjonalnie):</label>
         <input type="file" id="attachment" name="attachment">
-        <?php // TODO: Wyświetl istniejące załączniki tutaj i dodaj opcję ich usunięcia ?>
         <?php if (isset($errors['attachment'])): ?>
             <div class="error-message"><?= htmlspecialchars($errors['attachment']) ?></div>
         <?php endif; ?>
@@ -111,7 +130,3 @@ $input = $input ?? [];
 
     <button type="submit" class="btn btn-primary">Zapisz Zmiany</button>
 </form>
-
-<style>
-    textarea { font-family: inherit; font-size: inherit; }
-</style>

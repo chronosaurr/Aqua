@@ -1,7 +1,7 @@
 ```
 /
 |-- config.php
-|-- controller/Add commentMore actions
+|-- controller/
 |   |-- BaseController.php
 |   |-- DashboardController.php
 |-- public/

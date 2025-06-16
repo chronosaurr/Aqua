@@ -30,7 +30,7 @@ class Department {
     /**
      * Znajduje dział po jego ID.
      * @param int $id ID działu do znalezienia.
-     * @return array|null Zwraca tablicę z danymi działu lub null, jeśli nie znaleziono.Add commentMore actions
+     * @return array|null Zwraca tablicę z danymi działu lub null, jeśli nie znaleziono.
      */
     public function findById(int $id): ?array {
         $stmt = $this->db->query("SELECT * FROM departments WHERE id = :id", ['id' => $id]);
