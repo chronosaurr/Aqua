@@ -19,7 +19,12 @@
             </li>
             <li>
                 <a href="/user/list" class="<?= ($activeController === 'user') ? 'active' : '' ?>">
-                    <?= EMOJI['user'] ?> Użytkownicy
+                    <?= EMOJI['users'] ?> Użytkownicy
+                </a>
+            </li>
+            <li>
+                <a href="/user/login" class="<?= ($activeController === 'user-auth') ? 'active' : '' ?>">
+                    <?= EMOJI['user'] ?> Zaloguj / Zarejestruj
                 </a>
             </li>
         </ul>

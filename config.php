@@ -14,10 +14,11 @@ define('SITE_NAME', 'Aqua Ticket System');
 
 // Centralna definicja emoji!
 define('EMOJI', [
-    'ticket'     => '🎟️',
-    'user'       => '👤',
-    'department' => '🏢',
     'attachment' => '📎',
     'dashboard'  => '📊',
-    'logout'     => '🚪'
+    'department' => '🏢',
+    'logout'     => '🚪',
+    'ticket'     => '🎟️',
+    'user'       => '👤',
+    'users'      => '👥',
 ]);
