@@ -1,4 +1,4 @@
-<header class="main-header">Add commentMore actions
+<header class="main-header">
     <div class="logo"><?= SITE_NAME ?></div>
     <nav class="main-nav">
         <ul>
@@ -22,12 +22,20 @@
                     <?= EMOJI['users'] ?> Użytkownicy
                 </a>
             </li>
+            <li>Add commentMore actions
+                <a href="/department/list" class="<?= ($activeController === 'department') ? 'active' : '' ?>">
+                    <?= EMOJI['department'] ?> Działy
+                </a>
+            </li>
+            <li>
+                <a href="/user/login" class="<?= ($activeController === 'user-auth') ? 'active' : '' ?>">
+                    <?= EMOJI['user'] ?> Zaloguj / Zarejestruj
             <li>
                 <a href="/user/login" class="<?= ($activeController === 'user-auth') ? 'active' : '' ?>">
                     <?= EMOJI['user'] ?> Zaloguj / Zarejestruj
                 </a>
             </li>
         </ul>
-    </nav>Add commentMore actions
+    </nav>
 </header>
 <main class="container">

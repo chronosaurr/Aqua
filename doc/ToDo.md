@@ -41,10 +41,11 @@
 
 ## Faza 2: Rdzeń Aplikacji - System Ticketów
 
-- [*] **Stworzenie struktury dla Ticketów**
-  - [*] Utworzenie w bazie tabel: `tickets`, `departments`, `comments`, `attachments`
-  - [*] Stworzenie klas-modeli: `Ticket.php`, `Department.php`, `Comment.php`, `Attachment.php`
-  - [*] Stworzenie kontrolera `TicketController.php`
+- [x] **Stworzenie struktury dla Ticketów**
+  - [x] Utworzenie w bazie tabel: `tickets`, `departments`, `comments`, `attachments`
+  - [x] Stworzenie klas-modeli: `Ticket.php`, `Department.php`, `Comment.php`, `Attachment.php`
+  - [x] Stworzenie kontrolera `TicketController.php`
+  - [x] Stworzenie listy wydziałów
 - [ ] **Implementacja tworzenia ticketu (CRUD - Create)**
     - [ ] Stworzenie widoku formularza `views/ticket/create.php`
     - [ ] Metoda `create()` w `TicketController` do wyświetlania formularza
