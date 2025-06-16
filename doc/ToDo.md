@@ -1,4 +1,4 @@
-# To-Do List: System TicketowyAdd commentMore actions
+# To-Do List: System Ticketowy
 
 ## Faza 0: Fundamenty i Szkielet Aplikacji (Gotowe)
 
@@ -20,14 +20,14 @@
 - [x] **Implementacja logiki rejestracji**
     - [x] Stworzenie kontrolera `UserController`
     - [x] Stworzenie widoku `views/user/register.php`
-    - [x] Dodanie metody `register()` w `UserController` do obsługi formularzaAdd commentMore actions
+    - [x] Dodanie metody `register()` w `UserController` do obsługi formularza
     - [x] Walidacja danych przychodzących z formularza (czy niepuste, czy email poprawny, czy hasła się zgadzają)
     - [x] Sprawdzenie, czy email lub nazwa użytkownika już nie istnieją w bazie
     - [x] Hashowanie hasła (`password_hash()`) i zapis nowego użytkownika do bazy
 - [x] **Implementacja logiki logowania i sesji**
     - [x] Stworzenie widoku `views/user/login.php`
     - [x] Dodanie metody `login()` w `UserController`
-    - [x] Weryfikacja danych i hasła (`password_verify()`)Add commentMore actions
+    - [x] Weryfikacja danych i hasła (`password_verify()`)
     - [x] Zapisanie danych użytkownika w sesji (`$_SESSION`) po poprawnym logowaniu
     - [x] Wyświetlanie zalogowanego uzytkownika w stopce
 - [ ] **Implementacja resetowania hasła**
