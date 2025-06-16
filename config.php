@@ -14,10 +14,12 @@ define('CORE_PATH', ROOT_PATH . '/core');
 define('SITE_NAME', 'Aqua Ticket System');
 define('EMOJI', [
     'attachment' => '📎',
+    'clock'      => '⏰',
     'dashboard'  => '📊',
     'database'   => '📦',
     'department' => '🏢',
     'logout'     => '🚪',
+    'memory'     => '💾',
     'php'        => '🐘',
     'ticket'     => '🎟️',
     'user'       => '👤',
