@@ -1,14 +1,21 @@
+/* public/css/style.css */
 
 :root {
-
-    --primary-green: #49884d;
-    --primary-green-dark: #1d5323;
-    --background-tint: #c6d3c6;
+    --primary-green: #4CAF50;
+    --primary-green-dark: #388E3C;
+    --background-tint: #F8FBF8;
     --dropdown-bg: #E8F5E9;
     --panel-bg: #FFFFFF;
+
     --text-on-dark: #FFFFFF;
     --text-on-light: #333333;
+
     --border-color: #e0e0e0;
+
+    --success-color: #2F652F;
+    --success-bg: #DFF2BF;
+    --error-color: #D8000C;
+    --error-bg: #FFD2D2;
 }
 
 html {
@@ -28,7 +35,7 @@ body {
 .container {
     background-color: var(--panel-bg);
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba( 0, 0, 0, 0.05);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     flex: 1 0 auto;
     margin: 20px auto;
     max-width: 1200px;
@@ -36,11 +43,10 @@ body {
     width: 90%;
 }
 
-/*  header i navbar  */
 .main-header {
     align-items: center;
     background-color: var(--primary-green);
-    box-shadow: 0 2px 4px rgba( 0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     color: var(--text-on-dark);
     display: flex;
     justify-content: space-between;
@@ -69,7 +75,7 @@ body {
 }
 
 .main-nav a:hover {
-    background-color: rgba( 0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 .main-nav a.active {
@@ -77,7 +83,6 @@ body {
     font-weight: bold;
 }
 
-/*  dropdown Menu  */
 .dropdown {
     position: relative;
 }
@@ -89,7 +94,7 @@ body {
     left: 0;
     background-color: var(--dropdown-bg);
     min-width: 160px;
-    box-shadow: 0 8px 16px rgba( 0, 0, 0, 0.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     z-index: 1;
     border-radius: 0 0 5px 5px;
     border: 1px solid var(--border-color);
@@ -115,7 +120,7 @@ body {
 /*  stopka  */
 .main-footer {
     text-align: center;
-    padding: 0px;
+    padding: 0;
     background-color: var(--primary-green-dark);
     color: var(--text-on-dark);
     font-size: 0.8em;
@@ -135,7 +140,6 @@ body {
     margin: 0 5px;
 }
 
-
 .user-info {
     text-align: left;
 }
@@ -145,7 +149,7 @@ body {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
-    box-shadow: 0 2px 4px rgba( 0, 0, 0, 0.05);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .data-table th, .data-table td {
@@ -172,7 +176,6 @@ body {
     width: 1%;
 }
 
-/* buttons */
 .btn {
     display: inline-block;
     padding: 6px 12px;
@@ -190,6 +193,7 @@ body {
     color: var(--primary-green-dark);
     border-color: var(--primary-green-dark);
 }
+
 .btn-outline-primary:hover {
     background-color: var(--primary-green-dark);
     color: white;
@@ -199,12 +203,23 @@ body {
     color: #dc3545;
     border-color: #dc3545;
 }
+
 .btn-outline-danger:hover {
     background-color: #dc3545;
     color: white;
 }
 
-/* nav */
+.btn-primary {
+    background-color: var(--primary-green-dark);
+    color: white;
+    border-color: var(--primary-green-dark);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-green);
+    border-color: var(--primary-green);
+}
+
 .page-header {
     display: flex;
     justify-content: space-between;
@@ -218,14 +233,81 @@ body {
     margin: 0;
 }
 
-.btn-primary {
-    background-color: var(--primary-green-dark);
-    color: white;
-    border-color: var(--primary-green-dark);
+/* Wspólne style  pól tekstowych, list rozwijanych i obszarów tekstowych */
+.form-group {
+    margin-bottom: 20px;
 }
-.btn-primary:hover {
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="date"],
+.form-group input[type="file"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1em;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    font-family: inherit;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group input[type="password"]:focus,
+.form-group input[type="date"]:focus,
+.form-group input[type="file"]:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-green-dark);
+    box-shadow: 0 0 0 2px rgba(56, 142, 60, 0.2);
+}
+
+/* button formularza */
+form button[type="submit"], .submit-btn {
+    margin-top: 10px;
     background-color: var(--primary-green);
-    border-color: var(--primary-green);
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.2s ease-in-out;
+}
+form button[type="submit"]:hover, .submit-btn:hover {
+    background-color: var(--primary-green-dark);
+}
+
+/* Error/Success */
+.error-message {
+    color: var(--error-color);
+    background-color: var(--error-bg);
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    margin-top: 5px;
+    border: 1px solid var(--error-color);
+}
+
+.success-message {
+    color: var(--success-color);
+    background-color: var(--success-bg);
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    margin-bottom: 20px;
+    border: 1px solid var(--success-color);
 }
 
 /* listy załączników */
@@ -238,6 +320,7 @@ body {
     background-color: var(--background-tint);
     max-height: 150px;
     overflow-y: auto;
+    box-sizing: border-box;
 }
 .attachment-list li {
     padding: 8px 10px;

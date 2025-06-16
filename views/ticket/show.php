@@ -22,4 +22,17 @@ $ticket = $ticket ?? [];
         <p><strong>Utworzono:</strong> <?= htmlspecialchars($ticket['created_at'] ?? 'Brak') ?></p>
     </div>
 
+<?php if (!empty($attachments)): ?>
+    <h3>Załączniki:</h3>
+    <ul class="attachment-list">
+        <?php foreach ($attachments as $attachment): ?>
+            <li>
+                <a href="/uploads/<?= htmlspecialchars($attachment['stored_filename']) ?>" target="_blank">
+                    <?= htmlspecialchars($attachment['original_filename']) ?> (<?= round($attachment['filesize'] / 1024, 1) ?> KB)
+                </a>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+<?php endif; ?>
+
 <?php require_once VIEW_PATH . '/partials/footer.php'; ?>
