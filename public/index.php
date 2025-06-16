@@ -1,8 +1,11 @@
 <?php
 
+session_start();
+
 $startTime = microtime(true);
 
 require_once '../config.php';
+require_once CORE_PATH . '/Database.php';
 
 // router
 
