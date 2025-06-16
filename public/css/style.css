@@ -139,3 +139,67 @@ body {
 .user-info {
     text-align: left;
 }
+
+/* tables */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.data-table th, .data-table td {
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    text-align: left;
+}
+
+.data-table thead th {
+    background-color: var(--dropdown-bg);
+    font-weight: bold;
+}
+
+.data-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.data-table tbody tr:hover {
+    background-color: var(--dropdown-bg);
+}
+
+.data-table td.actions {
+    white-space: nowrap;
+    width: 1%;
+}
+
+/* buttons */
+.btn {
+    display: inline-block;
+    padding: 6px 12px;
+    font-size: 0.9em;
+    font-weight: 400;
+    text-align: center;
+    text-decoration: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-outline-primary {
+    color: var(--primary-green-dark);
+    border-color: var(--primary-green-dark);
+}
+.btn-outline-primary:hover {
+    background-color: var(--primary-green-dark);
+    color: white;
+}
+
+.btn-outline-danger {
+    color: #dc3545;
+    border-color: #dc3545;
+}
+.btn-outline-danger:hover {
+    background-color: #dc3545;
+    color: white;
+}
