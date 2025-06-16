@@ -56,4 +56,24 @@ class User {
         }
         return null;
     }
+
+    public function findAll(): array {
+        $stmt = $this->db->query("SELECT id, username, email, role, created_at FROM users ORDER BY username ASC");
+        return $stmt->fetchAll();
+    }
+    public function findById(int $id): ?array {
+        $stmt = $this->db->query("SELECT id, username, email, role FROM users WHERE id = :id", ['id' => $id]);
+        return $stmt->fetch() ?: null;
+    }
+    public function update(int $id, array $data): bool {
+        $sql = "UPDATE users SET username = :username, email = :email, role = :role WHERE id = :id";
+        $params = [
+            'id' => $id,
+            'username' => $data['username'],
+            'email' => $data['email'],
+            'role' => $data['role']
+        ];
+        $this->db->query($sql, $params);
+        return true;
+    }
 }

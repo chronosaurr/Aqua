@@ -28,6 +28,11 @@
                 </a>
             </li>
             <li>
+                <a href="/admin" class="<?= ($activeController === 'admin') ? 'active' : '' ?>">
+                    Panel Admina
+                </a>
+            </li>
+            <li>
                 <a href="/user/login" class="<?= ($activeController === 'user-auth') ? 'active' : '' ?>">
                     <?= EMOJI['user'] ?> Zaloguj / Zarejestruj
             <li>
