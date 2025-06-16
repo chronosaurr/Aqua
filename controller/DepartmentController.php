@@ -71,4 +71,55 @@ class DepartmentController extends BaseController {
         ];
         $this->renderView('department/create', $data);
     }
+    /**
+     * Wyświetla formularz edycji dla konkretnego działu.
+     */
+    public function edit(int $id): void {
+        $department = $this->departmentModel->findById($id);
+
+        if (!$department) {
+            http_response_code(404);
+            $this->renderView('errors/404');
+            return;
+        }
+
+        $data = [
+            'title' => 'Edytuj Dział',
+            'activeController' => 'department',
+            'department' => $department
+        ];
+        $this->renderView('department/edit', $data);
+    }
+
+
+    /**
+     * Przetwarza dane z formularza edycji i aktualizuje dział.
+     */
+    public function update(int $id): void {
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            header('Location: /department/list');
+            exit;
+        }
+
+        $name = trim($_POST['name'] ?? '');
+        $errors = [];
+
+        if (empty($name)) {
+            $errors['name'] = 'Nazwa działu jest wymagana.';
+        }
+
+        if (empty($errors)) {
+            $this->departmentModel->update($id, $name);
+            header('Location: /department/list?status=updated');
+            exit;
+        }
+
+        $data = [
+            'title' => 'Edytuj Dział - Błąd',
+            'activeController' => 'department',
+            'errors' => $errors,
+            'department' => ['id' => $id, 'name' => $name] // przekazuje stare dane
+        ];
+        $this->renderView('department/edit', $data);
+    }
 }

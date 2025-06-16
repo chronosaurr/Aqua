@@ -27,5 +27,27 @@ class Department {
         $this->db->query("INSERT INTO departments (name) VALUES (:name)", ['name' => $name]);
         return true;
     }
+    /**
+     * Znajduje dział po jego ID.
+     * @param int $id ID działu do znalezienia.
+     * @return array|null Zwraca tablicę z danymi działu lub null, jeśli nie znaleziono.Add commentMore actions
+     */
+    public function findById(int $id): ?array {
+        $stmt = $this->db->query("SELECT * FROM departments WHERE id = :id", ['id' => $id]);
+        return $stmt->fetch() ?: null;
+    }
 
+    /**
+     * Aktualizuje nazwę istniejącego działu.
+     * @param int $id ID działu do aktualizacji.
+     * @param string $name Nowa nazwa dla działu.
+     * @return bool
+     */
+    public function update(int $id, string $name): bool {
+        $this->db->query(
+            "UPDATE departments SET name = :name WHERE id = :id",
+            ['id' => $id, 'name' => $name]
+        );
+        return true;
+    }
 }

@@ -1,10 +1,14 @@
-<div class="page-header">More actions
+<div class="page-header">
     <h1><?= EMOJI['department'] ?> Zarządzanie Działami</h1>
     <a href="/department/create" class="btn btn-primary">Dodaj Nowy Dział</a>
 </div>
 
-<?php if (isset($_GET['status']) && $_GET['status'] === 'created'): ?>
-    <div class="success-message">Nowy dział został pomyślnie dodany.</div>
+<?php if (isset($_GET['status'])): ?>
+    <?php if ($_GET['status'] === 'created'): ?>
+        <div class="success-message">Nowy dział został pomyślnie dodany.</div>
+    <?php elseif ($_GET['status'] === 'updated'): ?>
+        <div class="success-message">Nazwa działu została zaktualizowana.</div>
+    <?php endif; ?>
 <?php endif; ?>
 
 <?php
@@ -22,3 +26,4 @@ $actions = [
 
 TableHelper::render($headers, $departments, $actions);
 ?>
+
