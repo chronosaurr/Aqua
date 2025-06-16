@@ -10,8 +10,8 @@ class UserController extends BaseController {
     private User $userModel;
 
     public function __construct() {
-        $dbConnection = Database::getInstance()->getConnection();
-        $this->userModel = new User($dbConnection);
+        // Zamiast podawać samo połączenie, przekazujemy całą instancję naszej klasy Database
+        $this->userModel = new User(Database::getInstance());
     }
 
     // Wyświetla formularz logowania.

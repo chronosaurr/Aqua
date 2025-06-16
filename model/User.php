@@ -1,8 +1,8 @@
 <?php
 
 class User {
-    private PDO $db;
-    public function __construct(PDO $db) {
+    private Database $db;
+    public function __construct(Database $db) {
         $this->db = $db;
     }
 
@@ -10,10 +10,8 @@ class User {
      * @return array|null Zwraca dane użytkownika lub null, jeśli nie znaleziono.
      */
     public function findByEmail(string $email): ?array {
-        $stmt = $this->db->prepare("SELECT * FROM users WHERE email = :email");
-        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
-        $stmt->execute();
-        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        $stmt = $this->db->query("SELECT * FROM users WHERE email = :email", ['email' => $email]);
+        $user = $stmt->fetch();
         return $user ?: null;
     }
 
@@ -21,10 +19,8 @@ class User {
      * @return array|null Zwraca dane użytkownika lub null, jeśli nie znaleziono.
      */
     public function findByUsername(string $username): ?array {
-        $stmt = $this->db->prepare("SELECT * FROM users WHERE username = :username");
-        $stmt->bindParam(':username', $username, PDO::PARAM_STR);
-        $stmt->execute();
-        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        $stmt = $this->db->query("SELECT * FROM users WHERE username = :username", ['username' => $username]);
+        $user = $stmt->fetch();
         return $user ?: null;
     }
 
@@ -35,15 +31,15 @@ class User {
     public function create(array $data): bool {
         $password_hash = password_hash($data['password'], PASSWORD_DEFAULT);
 
-        $stmt = $this->db->prepare(
-            "INSERT INTO users (username, email, password_hash) VALUES (:username, :email, :password_hash)"
-        );
-
-        $stmt->bindParam(':username', $data['username'], PDO::PARAM_STR);
-        $stmt->bindParam(':email', $data['email'], PDO::PARAM_STR);
-        $stmt->bindParam(':password_hash', $password_hash, PDO::PARAM_STR);
-
-        return $stmt->execute();
+        $params = [
+            'username' => $data['username'],
+            'email' => $data['email'],
+            'password_hash' => $password_hash
+        ];
+        // Metoda query() zwraca PDOStatement, którego wsm tu nie potrzebujemy,
+        // tho zapytanie się wykona i zostanie zalogowane.
+        $this->db->query("INSERT INTO users (username, email, password_hash) VALUES (:username, :email, :password_hash)", $params);
+        return true;
     }
 
     /**
