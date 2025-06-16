@@ -1,0 +1,111 @@
+
+:root {
+    --bg-color: #f4f7f9;
+    --text-color: #333;
+    --primary-color: #007bff;
+    --primary-hover: #0056b3;
+    --header-bg: #ffffff;
+    --border-color: #e0e0e0;
+    --active-bg: #e9ecef;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    flex: 1;
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: var(--header-bg);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* --- header i navbar --- */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
+    background-color: var(--header-bg);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 1.5em;
+    color: var(--primary-color);
+}
+
+.main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.main-nav a {
+    display: block;
+    padding: 20px 15px;
+    text-decoration: none;
+    color: var(--text-color);
+    transition: background-color 0.2s ease-in-out;
+}
+
+.main-nav a:hover {
+    background-color: var(--bg-color);
+    color: var(--primary-color);
+}
+
+.main-nav a.active {
+    background-color: var(--active-bg);
+    font-weight: bold;
+    box-shadow: inset 0 -2px 0 var(--primary-color); /* lekkie podkreslenie */
+}
+
+/* --- dropdown Menu --- */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--header-bg);
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    z-index: 1;
+    border-radius: 0 0 5px 5px;
+    overflow: hidden; /* aby border-radius dzialal */
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a {
+    padding: 12px 16px;
+    width: 100%;
+    box-sizing: border-box; /* zeby padding nie psul szerokosci */
+}
+
+/* --- stopka --- */
+.main-footer {
+    text-align: center;
+    padding: 15px;
+    background-color: #343a40;
+    color: #f8f9fa;
+    font-size: 0.9em;
+}
