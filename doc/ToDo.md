@@ -17,19 +17,19 @@
 
 ## Faza 1: System Uwierzytelniania i Użytkowników
 
-- [ ] **Implementacja logiki rejestracji**
-    - [ ] Stworzenie kontrolera `UserController`
-    - [ ] Stworzenie widoku `views/user/register.php`
-    - [ ] Dodanie metody `register()` w `UserController` do obsługi formularza
-    - [ ] Walidacja danych przychodzących z formularza (czy niepuste, czy email poprawny, czy hasła się zgadzają)
-    - [ ] Sprawdzenie, czy email lub nazwa użytkownika już nie istnieją w bazie
-    - [ ] Hashowanie hasła (`password_hash()`) i zapis nowego użytkownika do bazy
-- [ ] **Implementacja logiki logowania i sesji**
-    - [ ] Stworzenie widoku `views/user/login.php`
-    - [ ] Dodanie metody `login()` w `UserController`
-    - [ ] Weryfikacja danych i hasła (`password_verify()`)
-    - [ ] Zapisanie danych użytkownika w sesji (`$_SESSION`) po poprawnym logowaniu
-    - [ ] Zabezpieczenie stron/kontrolerów wymagających logowania
+- [x] **Implementacja logiki rejestracji**
+    - [x] Stworzenie kontrolera `UserController`
+    - [x] Stworzenie widoku `views/user/register.php`
+    - [x] Dodanie metody `register()` w `UserController` do obsługi formularzaAdd commentMore actions
+    - [x] Walidacja danych przychodzących z formularza (czy niepuste, czy email poprawny, czy hasła się zgadzają)
+    - [x] Sprawdzenie, czy email lub nazwa użytkownika już nie istnieją w bazie
+    - [x] Hashowanie hasła (`password_hash()`) i zapis nowego użytkownika do bazy
+- [x] **Implementacja logiki logowania i sesji**
+    - [x] Stworzenie widoku `views/user/login.php`
+    - [x] Dodanie metody `login()` w `UserController`
+    - [x] Weryfikacja danych i hasła (`password_verify()`)Add commentMore actions
+    - [x] Zapisanie danych użytkownika w sesji (`$_SESSION`) po poprawnym logowaniu
+    - [x] Wyświetlanie zalogowanego uzytkownika w stopce
 - [ ] **Implementacja resetowania hasła**
     - [ ] Formularz prośby o reset (wprowadzenie adresu e-mail)
     - [ ] Logika generowania bezpiecznego, jednorazowego tokenu i zapisywanie go w tabeli `password_resets`
