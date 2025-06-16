@@ -1,16 +1,21 @@
 </main>
 <footer class="main-footer">
-    <?php
-    // zmienne musza byc zdefiniowane w pliku, kotry dolacza stopke (aka w routerze)
-    global $startTime;
-    $executionTime = microtime(true) - $startTime;
-    $memoryUsage = memory_get_peak_usage(true) / 1024 / 1024; // w MB
-    ?>
-    <div class="stats">
-        <span><?= EMOJI['php']?> Wersja PHP: <?= PHP_VERSION ?></span> |
-        <span><?= EMOJI['clock']?> Czas generowania: <?= number_format($executionTime, 4) ?>s</span> |
-        <span><?= EMOJI['memory']?> Zużycie pamięci: <?= number_format($memoryUsage, 2) ?> MB</span>
-    </div>
+    <div class="footer-content">Add commentMore actions
+        <div class="user-info">
+            <?php if (Auth::isLoggedIn()): ?>
+                <?= EMOJI['user'] ?> Zalogowany jako: <strong><?= htmlspecialchars(Auth::getUsername()) ?></strong>
+            <?php endif; ?>
+        </div>
+        <div class="stats">
+            <?php
+            global $startTime;
+            $executionTime = microtime(true) - $startTime;
+            $memoryUsage = memory_get_peak_usage(true) / 1024 / 1024;
+            ?>
+            <span><?= EMOJI['php'] ?> <?= PHP_VERSION ?></span> |
+            <span><?= EMOJI['clock']?> Czas: <?= number_format($executionTime, 4) ?>s</span> |
+            <span><?= EMOJI['memory']?> Pamięć: <?= number_format($memoryUsage, 2) ?> MB</span>
+        </div>
 </footer>
 </body>
 </html>

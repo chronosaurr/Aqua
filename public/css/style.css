@@ -115,12 +115,27 @@ body {
 /* --- stopka --- */
 .main-footer {
     text-align: center;
-    padding: 15px;
+    padding: 0px;
     background-color: var(--primary-green-dark);
     color: var(--text-on-dark);
-    font-size: 0.9em;
+    font-size: 0.8em;
+}
+
+/* flexbox */
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .stats span {
-    margin: 0 10px;
+    margin: 0 5px;
+}
+
+
+.user-info {
+    text-align: left;
 }

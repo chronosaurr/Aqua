@@ -1,6 +1,6 @@
 <?php
 
-require_once CONTROLLER_PATH . '/BaseController.php';
+// require_once CONTROLLER_PATH . '/BaseController.php';
 
 class DashboardController extends BaseController {
     public function index(): void {

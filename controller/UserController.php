@@ -1,8 +1,9 @@
 <?php
 
-require_once CONTROLLER_PATH . '/BaseController.php';
-require_once MODEL_PATH . '/User.php';
-require_once CORE_PATH . '/Auth.php';
+// autoloader to robi
+// require_once CONTROLLER_PATH . '/BaseController.php';
+// require_once MODEL_PATH . '/User.php';
+// require_once CORE_PATH . '/Auth.php';
 
 class UserController extends BaseController {
 
