@@ -76,4 +76,15 @@ class User {
         $this->db->query($sql, $params);
         return true;
     }
+
+    /**
+     * Usuwa użytkownika z bazy danych.
+     * @param int $id ID użytkownika do usunięcia.
+     * @return bool
+     */
+    public function delete(int $id): bool {
+        $sql = "DELETE FROM users WHERE id = :id";
+        $this->db->query($sql, ['id' => $id]);
+        return true; // Zakładamy sukces
+    }
 }

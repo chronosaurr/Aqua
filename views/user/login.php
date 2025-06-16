@@ -41,3 +41,7 @@ $input = $input ?? [];
 <div class="link-to-register">
     <p>Nie masz jeszcze konta? <a href="/user/register">Zarejestruj się tutaj</a>.</p>
 </div>
+
+<?php if (isset($_GET['status']) && $_GET['status'] === 'login_required'): ?>
+    <div class="error-message">Musisz być zalogowany, aby uzyskać dostęp do tej strony.</div>
+<?php endif; ?>

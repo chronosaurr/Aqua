@@ -28,7 +28,7 @@ body {
 .container {
     background-color: var(--panel-bg);
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 4px rgba( 0, 0, 0, 0.05);
     flex: 1 0 auto;
     margin: 20px auto;
     max-width: 1200px;
@@ -40,7 +40,7 @@ body {
 .main-header {
     align-items: center;
     background-color: var(--primary-green);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba( 0, 0, 0, 0.1);
     color: var(--text-on-dark);
     display: flex;
     justify-content: space-between;
@@ -69,7 +69,7 @@ body {
 }
 
 .main-nav a:hover {
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba( 0, 0, 0, 0.1);
 }
 
 .main-nav a.active {
@@ -89,7 +89,7 @@ body {
     left: 0;
     background-color: var(--dropdown-bg);
     min-width: 160px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 16px rgba( 0, 0, 0, 0.1);
     z-index: 1;
     border-radius: 0 0 5px 5px;
     border: 1px solid var(--border-color);
@@ -145,7 +145,7 @@ body {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 4px rgba( 0, 0, 0, 0.05);
 }
 
 .data-table th, .data-table td {

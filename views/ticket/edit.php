@@ -3,8 +3,11 @@ $errors = $errors ?? [];
 $input = $input ?? [];
 ?>
 
+<?php require_once VIEW_PATH . '/partials/header.php'; ?>
+<?php require_once VIEW_PATH . '/partials/navbar.php'; ?>
+
 <div class="page-header">
-    <h1><?= EMOJI['ticket'] ?> Stwórz Nowy Ticket</h1>
+    <h1><?= EMOJI['ticket'] ?> Edytuj Ticket #<?= htmlspecialchars($ticket['id'] ?? 'N/A') ?></h1>
     <a href="/ticket/list" class="btn btn-outline-primary">Powrót do listy</a>
 </div>
 
@@ -12,7 +15,7 @@ $input = $input ?? [];
     <div class="error-message"><?= htmlspecialchars($errors['form']) ?></div>
 <?php endif; ?>
 
-<form action="/ticket/store" method="POST" enctype="multipart/form-data">
+<form action="/ticket/update/<?= htmlspecialchars($ticket['id'] ?? '') ?>" method="POST" enctype="multipart/form-data">
     <div class="form-group">
         <label for="title">Tytuł:</label>
         <input type="text" id="title" name="title" value="<?= htmlspecialchars($input['title'] ?? '') ?>" required>
@@ -26,6 +29,24 @@ $input = $input ?? [];
         <textarea id="description" name="description" rows="5" required><?= htmlspecialchars($input['description'] ?? '') ?></textarea>
         <?php if (isset($errors['description'])): ?>
             <div class="error-message"><?= htmlspecialchars($errors['description']) ?></div>
+        <?php endif; ?>
+    </div>
+
+    <div class="form-group">
+        <label for="status">Status:</label>
+        <select id="status" name="status" required>
+            <?php
+            $statuses = ['otwarty', 'w_toku', 'zamknięty', 'oczekujący'];
+            foreach ($statuses as $statusOption):
+                ?>
+                <option value="<?= $statusOption ?>"
+                    <?= (isset($input['status']) && $input['status'] === $statusOption) ? 'selected' : '' ?>>
+                    <?= ucfirst(str_replace('_', ' ', $statusOption)) ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
+        <?php if (isset($errors['status'])): ?>
+            <div class="error-message"><?= htmlspecialchars($errors['status']) ?></div>
         <?php endif; ?>
     </div>
 
@@ -80,14 +101,15 @@ $input = $input ?? [];
     </div>
 
     <div class="form-group">
-        <label for="attachment">Załącznik (opcjonalnie):</label>
+        <label for="attachment">Nowy Załącznik (opcjonalnie):</label>
         <input type="file" id="attachment" name="attachment">
+        <?php // TODO: Wyświetl istniejące załączniki tutaj i dodaj opcję ich usunięcia ?>
         <?php if (isset($errors['attachment'])): ?>
             <div class="error-message"><?= htmlspecialchars($errors['attachment']) ?></div>
         <?php endif; ?>
     </div>
 
-    <button type="submit" class="btn btn-primary">Stwórz Ticket</button>
+    <button type="submit" class="btn btn-primary">Zapisz Zmiany</button>
 </form>
 
 <style>
