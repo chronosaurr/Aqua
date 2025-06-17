@@ -18,11 +18,6 @@
                 </div>
             </li>
             <li>
-                <a href="/user/list" class="<?= ($activeController === 'user') ? 'active' : '' ?>">
-                    <?= EMOJI['users'] ?> Użytkownicy
-                </a>
-            </li>
-            <li>
                 <a href="/department/list" class="<?= ($activeController === 'department') ? 'active' : '' ?>">
                     <?= EMOJI['department'] ?> Działy
                 </a>

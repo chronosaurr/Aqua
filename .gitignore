@@ -6,3 +6,4 @@ composer.lock
 
 /logs/
 /public/uploads/
+config.php
