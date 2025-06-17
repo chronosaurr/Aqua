@@ -6,6 +6,7 @@ class TicketController extends BaseController {
     private Department $departmentModel;
     private User $userModel;
     private Attachment $attachmentModel;
+    private Comment $commentModel;
 
     public function __construct() {
         //Wszystkie akcje TicketController wymagają zalogowania
@@ -17,6 +18,7 @@ class TicketController extends BaseController {
         $this->departmentModel = new Department($db);
         $this->userModel = new User($db);
         $this->attachmentModel = new Attachment($db);
+        $this->commentModel = new Comment($db);
     }
 
     /**
@@ -193,15 +195,15 @@ class TicketController extends BaseController {
             return;
         }
 
-        // $attachments = $this->attachmentModel->findByTicketId($id);
-        // $comments = $this->commentModel->findByTicketId($id);
+        $attachments = $this->attachmentModel->findByTicketId($id); // Pobierz załączniki
+        $comments = $this->commentModel->findByTicketId($id); // Pobierz komentarze
 
         $data = [
             'title' => 'Ticket #' . $ticket['id'],
             'activeController' => 'ticket',
             'ticket' => $ticket,
-            // 'attachments' => $attachments,
-            // 'comments' => $comments,
+            'attachments' => $attachments, // Przekaż załączniki do widoku
+            'comments' => $comments, // Przekaż komentarze do widoku
         ];
         $this->renderView('ticket/show', $data);
     }
@@ -225,7 +227,8 @@ class TicketController extends BaseController {
             'departments' => $this->departmentModel->findAll(),
             'users' => $this->userModel->findAll(),
             'errors' => [],
-            'input' => $ticket
+            'input' => $ticket,
+            'current_attachments' => $this->attachmentModel->findByTicketId($id)
         ];
         $this->renderView('ticket/edit', $data);
     }
@@ -285,6 +288,23 @@ class TicketController extends BaseController {
         } else {
             $input['deadline_at'] = null;
         }
+
+        $file = $_FILES['attachment'] ?? null;
+        if ($file && $file['error'] !== UPLOAD_ERR_NO_FILE) {
+            if ($file['error'] !== UPLOAD_ERR_OK) {
+                $errors['attachment'] = 'Błąd przesyłania pliku: ' . $file['error'];
+            } elseif ($file['size'] > 5 * 1024 * 1024) { // Limit 5MB
+                $errors['attachment'] = 'Plik jest za duży (maks. 5MB).';
+            } else {
+                $finfo = new finfo(FILEINFO_MIME_TYPE);
+                $mimeType = $finfo->file($file['tmp_name']);
+                $allowedMimeTypes = ['image/jpeg', 'image/png', 'application/pdf'];
+                if (!in_array($mimeType, $allowedMimeTypes)) {
+                    $errors['attachment'] = 'Dozwolone formaty: JPG, PNG, PDF.';
+                }
+            }
+        }
+        $attachmentsToDelete = $_POST['attachments_to_delete'] ?? [];
 
         if (empty($errors)) {
             if ($this->ticketModel->update($id, $input)) {
