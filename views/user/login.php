@@ -3,17 +3,6 @@ $errors = $errors ?? [];
 $input = $input ?? [];
 ?>
 
-<style>
-    .form-group { margin-bottom: 15px; }
-    .form-group label { display: block; margin-bottom: 5px; font-weight: bold; }
-    .form-group input { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
-    .error-message { color: #D8000C; background-color: #FFD2D2; padding: 5px; border-radius: 3px; font-size: 0.9em; margin-top: 5px;}
-    .success-message { color: #2F652F; background-color: #DFF2BF; padding: 5px; border-radius: 3px; font-size: 0.9em; margin-bottom: 10px;}
-    .submit-btn { background-color: var(--primary-green); color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer; font-size: 1em; }
-    .submit-btn:hover { background-color: var(--primary-green-dark); }
-    .link-to-register { margin-top: 15px; }
-</style>
-
 <h1><?= EMOJI['user'] ?> Zaloguj się</h1>
 
 <?php if (isset($_GET['error']) && $_GET['error'] === 'invalid_credentials'): ?>

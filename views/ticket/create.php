@@ -1,6 +1,8 @@
 <?php
 $errors = $errors ?? [];
 $input = $input ?? [];
+$departments = $departments ?? [];
+$users = $users ?? [];
 ?>
 
 <div class="page-header">

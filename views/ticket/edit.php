@@ -1,6 +1,9 @@
 <?php
 $errors = $errors ?? [];
 $input = $input ?? [];
+$ticket = $ticket ?? [];
+$departments = $departments ?? [];
+$users = $users ?? [];
 $current_attachments = $current_attachments ?? [];
 ?>
 
