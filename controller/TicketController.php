@@ -8,11 +8,11 @@ class TicketController extends BaseController {
     private Attachment $attachmentModel;
 
     public function __construct() {
-        parent::__construct();
         //Wszystkie akcje TicketController wymagają zalogowania
         $this->requireAuth();
 
         $db = Database::getInstance();
+
         $this->ticketModel = new Ticket($db);
         $this->departmentModel = new Department($db);
         $this->userModel = new User($db);
