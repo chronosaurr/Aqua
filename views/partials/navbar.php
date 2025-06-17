@@ -30,10 +30,6 @@
             <li>
                 <a href="/user/login" class="<?= ($activeController === 'user-auth') ? 'active' : '' ?>">
                     <?= EMOJI['user'] ?> Zaloguj / Zarejestruj
-            <li>
-                <a href="/user/login" class="<?= ($activeController === 'user-auth') ? 'active' : '' ?>">
-                    <?= EMOJI['user'] ?> Zaloguj / Zarejestruj
-                </a>
             </li>
         </ul>
     </nav>
