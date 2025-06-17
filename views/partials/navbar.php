@@ -27,10 +27,15 @@
                     Panel Admina
                 </a>
             </li>
-            <li>
-                <a href="/user/login" class="<?= ($activeController === 'user-auth') ? 'active' : '' ?>">
-                    <?= EMOJI['user'] ?> Zaloguj / Zarejestruj
-            </li>
+            
+            <?php if (Auth::isLoggedIn()): ?>
+                <li><a href="/user/logout"><?= EMOJI['logout'] ?> Wyloguj</a></li>
+            <?php else: ?>
+                 <li>
+                    <a href="/user/login" class="<?= ($activeController === 'user') ? 'active' : '' ?>">
+                        <?= EMOJI['user'] ?> Zaloguj / Zarejestruj
+                    </a> </li>
+            <?php endif; ?>
         </ul>
     </nav>
 </header>
