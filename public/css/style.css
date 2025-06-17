@@ -303,3 +303,107 @@ body {
 form button[type="submit"] {
     margin-top: 10px;
 }
+
+/* --- Style dla Widoku Ticketu i Komentarzy --- */
+
+.ticket-container {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.ticket-details {
+    flex: 3;
+}
+.ticket-sidebar {
+    flex: 1;
+    background-color: var(--background-tint);
+    padding: 15px;
+    border-radius: 8px;
+}
+.ticket-description {
+    background-color: #f9f9f9;
+    border: 1px solid var(--border-color);
+    padding: 15px;
+    border-radius: 5px;
+    min-height: 100px;
+}
+.ticket-meta {
+    font-size: 0.9em;
+    color: #6c757d;
+}
+.attachment-list {
+    list-style: none;
+    padding: 0;
+}
+.attachment-list li a {
+    text-decoration: none;
+    color: var(--primary-green-dark);
+}
+.attachment-list li a:hover {
+    text-decoration: underline;
+}
+.status-badge {
+    padding: 4px 8px;
+    border-radius: 15px;
+    font-weight: bold;
+    color: white;
+    font-size: 0.9em;
+}
+.status-otwarty { background-color: #28a745; }
+.status-zamknięty { background-color: #6c757d; }
+.emoji-small {
+    font-size: 1.2em;
+    vertical-align: middle;
+}
+.comments-section {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px solid var(--border-color);
+}
+.comment-list {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.comment-bubble {
+    background-color: #f1f1f1;
+    padding: 15px;
+    border-radius: 15px;
+    max-width: 80%;
+    align-self: flex-start; /* Domyślnie po lewej */
+}
+.comment-bubble.is-own-comment {
+    background-color: var(--dropdown-bg); /* Jasnozielony dla własnych komentarzy */
+    align-self: flex-end; /* Własne komentarze po prawej */
+}
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9em;
+    margin-bottom: 8px;
+    color: #666;
+}
+.comment-content {
+    word-wrap: break-word;
+}
+.add-comment-form {
+    margin-top: 25px;
+    padding-top: 15px;
+    border-top: 1px dashed var(--border-color);
+}
+.add-comment-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1em;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+.add-comment-form textarea:focus {
+    outline: none;
+    border-color: var(--primary-green-dark);
+    box-shadow: 0 0 0 2px rgba(56, 142, 60, 0.2);
+}
