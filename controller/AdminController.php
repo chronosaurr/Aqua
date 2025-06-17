@@ -106,7 +106,6 @@ class AdminController extends BaseController {
             }
         }
 
-
         $data = [
             'title' => 'Dodaj Nowego Użytkownika - Błąd',
             'activeController' => 'admin',
@@ -157,30 +156,33 @@ class AdminController extends BaseController {
 
         $errors = [];
         $currentUser = $this->userModel->findById($id);
+        $loggedInUserId = Auth::getUserId();
+        $loggedInUserRole = Auth::getRole();
 
         if (!$currentUser) {
             http_response_code(404);
             $this->renderView('errors/404');
             return;
         }
-
-
+        // Walidacja jesli zmienione cos
         if ($input['username'] !== $currentUser['username'] && $this->userModel->findByUsername($input['username'])) {
             $errors['username'] = 'Nazwa użytkownika jest już zajęta.';
         }
-
         if ($input['email'] !== $currentUser['email'] && $this->userModel->findByEmail($input['email'])) {
             $errors['email'] = 'Adres email jest już zajęty.';
         }
-
         if (!filter_var($input['email'], FILTER_VALIDATE_EMAIL)) {
             $errors['email'] = 'Nieprawidłowy format adresu email.';
         }
 
-
+        // Walidacja roli
         $allowedRoles = ['user', 'owner', 'admin'];
         if (!in_array($input['role'], $allowedRoles)) {
             $errors['role'] = 'Nieprawidłowa rola.';
+        }
+
+        if ($loggedInUserId === $id && $loggedInUserRole === 'admin' && $input['role'] !== 'admin') {
+            $errors['role'] = 'Nie możesz zmienić własnej roli administratora na inną.';
         }
 
         if (empty($errors)) {
@@ -191,7 +193,6 @@ class AdminController extends BaseController {
                 $errors['form'] = 'Wystąpił błąd podczas aktualizacji użytkownika.';
             }
         }
-
 
         $data = [
             'title' => 'Edytuj Użytkownika - Błąd',
