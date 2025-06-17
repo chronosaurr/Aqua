@@ -4,7 +4,7 @@ class AdminController extends BaseController {
 
     private User $userModel;
     public function __construct() {
-        parent::__construct();
+
         $this->requireRole('admin');
 
         $this->userModel = $this->loadModel('User');
